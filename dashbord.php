@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +49,7 @@ $getUsers = $conn->prepare($sql);
 $getUsers->execute();
 $users = $getUsers->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <div id="wrapper" class="toggled">
 
         <!-- Sidebar -->
@@ -176,7 +179,7 @@ body {
 }
 
 .sidebar-nav>.sidebar-brand a {
-  color:hsl(0, 0.00%, 100.00%);
+  color:rgb(255, 255, 255);
 }
 
 .sidebar-nav>.sidebar-brand a:hover {
@@ -207,7 +210,6 @@ body {
   }
 }
 </style>
-
 <table>
   <thead>
     <tr>
@@ -220,16 +222,22 @@ body {
     <tr>
       <td><?= htmlspecialchars($user['email']) ?></td>
       <td>
-        <form action="delete.php" method="POST" onsubmit="return confirm('Are you sure?');">
-          <input type="hidden" name="email" value="<?= htmlspecialchars($user['email']) ?>" />
-          <button type="submit">Delete</button>
-        </form>
+        <button><a href="udb.php?email=<?= urlencode($user['email']) ?>" class="d" >Edit</a></button>
       
       </td>
     </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
+<style>
+
+.d {
+    text-decoration: none;
+    color: black;
+}
+
+</style>
+
 <script>
 
 import { Tab, initMDB } from "mdb-ui-kit";
@@ -239,3 +247,17 @@ initMDB({ Tab });
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
