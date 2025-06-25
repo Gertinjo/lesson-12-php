@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $sqlQuery=$conn->prepare($sql);
     $sqlQuery->bindParam(':email',$email);
     $sqlQuery->bindParam(':password',$password);
-
+    header("location:dashboard.php");
     $sqlQuery->execute();
 
     echo "data saved";
